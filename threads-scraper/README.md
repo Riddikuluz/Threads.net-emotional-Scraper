@@ -1,48 +1,69 @@
 # Threads.net Scraper
 
-This scraper is using [scrapfly.io](https://scrapfly.io/) and Python to scrape Threads.net post and profile data.
+Este raspador utiliza [scrapfly.io](https://scrapfly.io/) y Python para raspar los datos de las publicaciones y perfiles de Threads.net.
 
-Full tutorial <https://scrapfly.io/blog/how-to-scrape-threads/>
+El código de raspado se encuentra en el archivo `threads.py`. Está completamente documentado y simplificado con fines educativos y el código de ejemplo del raspador se puede encontrar en el archivo `run.py`.
 
-The scraping code is located in the `threads.py` file. It's fully documented and simplified for educational purposes and the example scraper run code can be found in `run.py` file.
+Este raspador raspa:
+- Datos del hilo (también conocido como publicación) de Threads.net
+- Datos del perfil de Threads.net
 
-This scraper scrapes:
-- Threads.net Thread (aka post) data
-- Threads.net Profile data
+Para ver ejemplos de salida, consulte el directorio `./results`.
 
-For output examples see the `./results` directory.
+Nota: Este raspador solo raspa datos públicos de Threads que no requieren un inicio de sesión para acceder.
 
-Note: This scraper is only scraping public Threads data that doesn't require a login to access.
+## Descargo de responsabilidad de uso justo
 
-## Fair Use Disclaimer
+Tenga en cuenta que este código se proporciona de forma gratuita tal cual, y Scrapfly __no__ proporciona soporte gratuito para raspado web o consulta. Para cualquier error, consulte el rastreador de problemas.
 
-Note that this code is provided free of charge as is, and Scrapfly does __not__ provide free web scraping support or consultation. For any bugs, see the issue tracker.
+## Configuración y uso
 
-## Setup and Use
+Este raspador de Threads.net utiliza __Python 3.10__ con el paquete [scrapfly-sdk](https://pypi.org/project/scrapfly-sdk/) que se utiliza para raspar y analizar los datos de Threads.
 
-This Threads.net scraper uses __Python 3.10__ with [scrapfly-sdk](https://pypi.org/project/scrapfly-sdk/) package which is used to scrape and parse Threads' data.
-
-0. Ensure you have __Python 3.10__ and [poetry Python package manager](https://python-poetry.org/docs/#installation) on your system.
-1. Retrieve your Scrapfly API key from <https://scrapfly.io/dashboard> and set `SCRAPFLY_KEY` environment variable:
+0. Asegúrese de tener __Python 3.10__ y el [gestor de paquetes Python poetry](https://python-poetry.org/docs/#installation) en su sistema.
+1. Recupere su clave API Scrapfly desde <https://scrapfly.io/dashboard> y configure la variable de entorno `SCRAPFLY_KEY`:
     ```shell
-    $ export SCRAPFLY_KEY="YOUR SCRAPFLY KEY"
+    $ export SCRAPFLY_KEY="SU CLAVE SCRAPFLY"
     ```
-2. Clone and install Python environment:
+    o en el PowerShell en el caso de Windows:
+   ```shell
+    $ export SCRAPFLY_KEY="SU CLAVE SCRAPFLY"
+    ```
+2. Clone e instale el entorno Python:
     ```shell
     $ git clone https://github.com/scrapfly/scrapfly-scrapers.git
     $ cd scrapfly-scrapers/threads-scraper
     $ poetry install
+    $ pip install openpyxl sentiment-analysis-spanish scrapfly-sdk playwright nested_lookup jmespath "scrapfly-sdk[all]"
     ```
-3. Run example scrape:
+3. Ejecute el raspado de ejemplo:
     ```shell
     $ poetry run python run.py
     ```
-4. Run tests:
+4. Ejecute las pruebas:
     ```shell
     $ poetry install --with dev
     $ poetry run pytest test.py
-    # or specific scraping areas
+    # o áreas específicas de raspado
     $ poetry run pytest test.py -k test_thread_scraping
     $ poetry run pytest test.py -k test_user_scraping
     ```
+ 5. Ejecute el raspado, agregando urls al archivo run.py:
+      ```shell
+    urls = [
+    "https://www.threads.net/@liberalesargentinaok/post/CyMS-ONuuaU",
+    "https://www.threads.net/@lanatappt/post/CyvjalRg-vx",
+    "https://www.threads.net/@lanatappt/post/CyuKPeasna5"  # Ejemplos
+    # Agrega más URLs aquí...
+    ]
+    ```
+    Para posteriormente, ejecutar el script:
+    ```shell
+    $ poetry run python run.py
+    ```
 
+Además, este proyecto incluye tres scripts adicionales que procesan los datos extraídos por el raspador:
+
+- `run.py`: Este script ejecuta el raspador en una lista predefinida de URLs y guarda los resultados en archivos JSON individuales en el directorio ./results. También ejecuta dos scripts adicionales, 'json_csv.py' y 'emo_excel.py', que están ubicados en el directorio /addons.
+- `json_csv.py`: Este script procesa los archivos JSON generados por el raspador y los convierte en archivos CSV. Cada archivo JSON se lee, se extraen los datos relevantes del hilo (thread) y las respuestas, y estos datos se guardan en un archivo CSV individual.
+- `emo_excel.py`: Este script realiza un análisis de sentimientos en los datos del archivo CSV 'Formatiado.csv'. Utiliza la biblioteca `sentiment_analysis_spanish` para analizar el sentimiento de cada texto en el DataFrame. Los resultados se guardan como un nuevo archivo CSV llamado 'Final.csv'. Luego, este archivo CSV se carga nuevamente en un DataFrame y se guarda como un archivo Excel llamado 'Final.xlsx' en la carpeta 'xlsx'.

@@ -1,26 +1,26 @@
 # Scrapfly Scrapers
 
-This repository contains example scrapers for popular web scraping targets using [scrapfly](https://scrapfly.io) web scraping API and Python.
+Este repositorio contiene ejemplos de scrapers para objetivos populares de web scraping utilizando la API de web scraping de [scrapfly](https://scrapfly.io) y Python. Este es un fork que se enfocará, por el momento, en el scrap de comentarios de threads.
 
-Most Scrapers use a simple web scraping stack:
+La mayoría de los Scrapers utilizan una simple pila de web scraping:
 
-- Python version 3.10+
-- [Scrapfly's Python SDK](https://github.com/scrapfly/python-scrapfly) for web scraping.
-- [JMespath]() and [nested-lookup]() for JSON parsing when needed.
+- Python versión 3.10+
+- [SDK de Python de Scrapfly](https://github.com/scrapfly/python-scrapfly) para web scraping.
+- [JMespath]() y [nested-lookup]() para el análisis de JSON cuando sea necesario.
 
-For full guides on how to scrape these targets (and many others) see the [scrapeguide directory](https://scrapfly.io/blog/tag/scrapeguide/):
+Para obtener guías completas sobre cómo raspar estos objetivos (y muchos otros), consulte el [directorio scrapeguide](https://scrapfly.io/blog/tag/scrapeguide/):
 
-- [aliexpress.com](./aliexpress-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-aliexpress/)
-- [amazon.com](./amazon-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-amazon/)
-- [booking.com](./bookingcom-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-bookingcom/)
-- [crunchbase.com](./crunchbase-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-crunchbase/)
-- [ebay.com](./ebay-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-ebay/)
-- [glassdoor.com](./glassdoor-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-glassdoor/)
-- [indeed.com](./indeed-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-indeedcom/)
-- [instagram.com](./instagram-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-instagram/)
-- [realtor.com](./realtorcom-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-realtorcom/)
-- [stockx.com](./stockx-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-stockx/)
-- [threads.net](./threads-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-threads/)
-- [tripadvisor.com](./tripadvisor-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-tripadvisor/)
-- [twitter.com](./twitter-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-twitter/)
-- [zillow.com](./zillow-scraper/) + [guide](https://scrapfly.io/blog/how-to-scrape-zillow/)
+- [aliexpress.com](./aliexpress-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-aliexpress/)
+- [amazon.com](./amazon-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-amazon/)
+- [booking.com](./bookingcom-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-bookingcom/)
+- [crunchbase.com](./crunchbase-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-crunchbase/)
+- [ebay.com](./ebay-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-ebay/)
+- [glassdoor.com](./glassdoor-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-glassdoor/)
+- [indeed.com](./indeed-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-indeedcom/)
+- [instagram.com](./instagram-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-instagram/)
+- [realtor.com](./realtorcom-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-realtorcom/)
+- [stockx.com](./stockx-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-stockx/)
+- [threads.net](./threads-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-threads/)
+- [tripadvisor.com](./tripadvisor-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-tripadvisor/)
+- [twitter.com](./twitter-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-twitter/)
+- [zillow.com](./zillow-scraper/) + [guía](https://scrapfly.io/blog/how-to-scrape-zillow/)
