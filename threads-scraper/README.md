@@ -65,5 +65,16 @@ Este raspador de Threads.net utiliza __Python 3.10__ con el paquete [scrapfly-sd
 Además, este proyecto incluye tres scripts adicionales que procesan los datos extraídos por el raspador:
 
 - `run.py`: Este script ejecuta el raspador en una lista predefinida de URLs y guarda los resultados en archivos JSON individuales en el directorio ./results. También ejecuta dos scripts adicionales, 'json_csv.py' y 'emo_excel.py', que están ubicados en el directorio /addons.
-- `json_csv.py`: Este script procesa los archivos JSON generados por el raspador y los convierte en archivos CSV. Cada archivo JSON se lee, se extraen los datos relevantes del hilo (thread) y las respuestas, y estos datos se guardan en un archivo CSV individual.
-- `emo_excel.py`: Este script realiza un análisis de sentimientos en los datos del archivo CSV 'Formatiado.csv'. Utiliza la biblioteca `sentiment_analysis_spanish` para analizar el sentimiento de cada texto en el DataFrame. Los resultados se guardan como un nuevo archivo CSV llamado 'Final.csv'. Luego, este archivo CSV se carga nuevamente en un DataFrame y se guarda como un archivo Excel llamado 'Final.xlsx' en la carpeta 'xlsx'.
+Claro, aquí tienes un breve resumen de cada archivo `.py` que se creó:
+
+1. **data_extraction.py**: Este archivo contiene funciones para extraer datos de archivos JSON. Las funciones incluyen `obtener_datos_json` para leer un archivo JSON, `extraer_datos` para extraer datos específicos de los datos JSON, `extraer_respuestas` para extraer respuestas de los datos JSON y `guardar_datos_csv` para guardar los datos extraídos en un archivo CSV. La función `procesar_archivos_json` procesa todos los archivos JSON en el directorio 'results'.
+
+2. **data_transformation.py**: Este archivo contiene funciones para transformar los datos extraídos. La función `transformar_datos` renombra las columnas del DataFrame y añade nuevas columnas. La función `procesar_archivos_csv` procesa todos los archivos CSV en el directorio 'csv' y guarda los datos transformados en 'csv/Formatiado.csv'.
+
+3. **sentiment_analysis.py**: Este archivo contiene funciones para realizar un análisis de sentimientos en los datos transformados. La función `analisis_sentimientos` aplica un análisis de sentimientos a la columna 'Texto' del DataFrame y guarda los resultados en la columna 'Concepto_asociado'. La función `procesar_archivos_formatiado` lee el archivo 'csv/Formatiado.csv', aplica el análisis de sentimientos y guarda los resultados.
+
+4. **data_storage.py**: Este archivo contiene la función `guardar_datos_excel` para guardar el DataFrame final en un archivo Excel.
+
+5. **main.py**: Este es el archivo principal que importa y utiliza las funciones de los otros archivos para realizar todo el proceso desde la extracción de datos hasta el almacenamiento de los resultados.
+
+Espero que esto te ayude a entender mejor la estructura del código. ¡Buena suerte con tu proyecto! 😊

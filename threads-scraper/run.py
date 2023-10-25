@@ -43,7 +43,4 @@ if __name__ == "__main__":
     asyncio.run(run())
 
 # Ejecuta el archivo 'json_csv.py'
-subprocess.run(["python", "addons/json_csv.py"])
-
-# Ejecuta el archivo 'emo_excel.py'
-subprocess.run(["python", "addons/emo_excel.py"])
+subprocess.run(["python", "addons/main.py"])
