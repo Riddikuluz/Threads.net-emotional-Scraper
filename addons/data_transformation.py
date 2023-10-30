@@ -2,10 +2,9 @@ import pandas as pd
 from pathlib import Path
 
 def transformar_datos(df):
-    df.rename(columns={'Fecha': 'Fecha', 'Nombre de Usuario': 'Nombre Usuario', 'Fuente': 'Fuente'}, inplace=True)
-    df['Concepto_asociado'] = 'N/E'
+    df['Concepto asociado'] = 'N/E'
     df['Género'] = 'N/E'
-    df['Grupo_Étareo'] = 'N/E'
+    df['Grupo Étareo'] = 'N/E'
     df['Escolaridad'] = 'N/E'
     return df
 

@@ -29,17 +29,17 @@ def extraer_respuestas(data, fuente):
             replies_data.append({
                 'Texto': reply_text,
                 'Fecha': reply_published_on,
-                'Nombre de Usuario': reply_username,
+                'Nombre Usuario': reply_username,
                 'Fuente': fuente
             })
     return replies_data
 
 def guardar_datos_csv(csv_filename, text, published_on, nombre_usuario, fuente, replies_data):
     with open(csv_filename, 'w', newline='', encoding='utf-8') as csvfile:
-        fieldnames = ['Texto', 'Fecha', 'Nombre de Usuario', 'Fuente']
+        fieldnames = ['Texto', 'Fecha', 'Nombre Usuario', 'Fuente']
         writer = csv.DictWriter(csvfile, fieldnames=fieldnames)
         writer.writeheader()
-        writer.writerow({'Texto': text, 'Fecha': published_on, 'Nombre de Usuario': nombre_usuario, 'Fuente': fuente})
+        writer.writerow({'Texto': text, 'Fecha': published_on, 'Nombre Usuario': nombre_usuario, 'Fuente': fuente})
         writer.writerows(replies_data)
 
 def procesar_archivos_json():

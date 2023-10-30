@@ -27,7 +27,7 @@ def analisis_sentimientos(df):
         else:
             return translate_emotion_to_spanish(result.output)
 
-    df['Concepto_asociado'] = df['Texto'].apply(sentiment_to_emotion)
+    df['Concepto asociado'] = df['Texto'].apply(sentiment_to_emotion)
 
     
 def procesar_archivos_formatiado():

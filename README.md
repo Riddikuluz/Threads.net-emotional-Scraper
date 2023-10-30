@@ -1,80 +1,49 @@
-# Threads.net Scraper
+# Scraper de Threads.net
 
-Este raspador utiliza [scrapfly.io](https://scrapfly.io/) y Python para raspar los datos de las publicaciones y perfiles de Threads.net.
+## Descripción
+Este repositorio contiene un script en Python que muestra cómo utilizar el scraper de Threads.net para recopilar datos de productos e información de búsqueda de productos. El script utiliza la API de Threads.net a través del servicio Scrapfly. Los resultados se guardan en el directorio `./results/`.
 
-El código de raspado se encuentra en el archivo `threads.py`. Está completamente documentado y simplificado con fines educativos y el código de ejemplo del raspador se puede encontrar en el archivo `run.py`.
+## Prerrequisitos
+Antes de ejecutar el script, asegúrate de tener la clave de API de Scrapfly. Configura la variable de entorno `$SCRAPFLY_KEY` con tu clave de API de Scrapfly:
 
-Este raspador raspa:
-- Datos del hilo (también conocido como publicación) de Threads.net
-- Datos del perfil de Threads.net
+### Linux/Mac
+```bash
+export SCRAPFLY_KEY="tu clave desde https://scrapfly.io/dashboard"
+```
 
-Para ver ejemplos de salida, consulte el directorio `./results`.
+### Windows
+```powershell
+$env:SCRAPFLY_KEY="tu clave desde https://scrapfly.io/dashboard"
+```
 
-Nota: Este raspador solo raspa datos públicos de Threads que no requieren un inicio de sesión para acceder.
+## Uso
+1. Clona el repositorio en tu máquina local.
+2. Configura la clave de API de Scrapfly según se describe en los prerrequisitos.
+3. Ejecuta el script:
+   ```bash
+   python scraper.py
+   ```
 
-## Descargo de responsabilidad de uso justo
+## Detalles del Script
+### `scraper.py`
+Este script inicia el scraper de Threads.net y guarda los resultados en el directorio `./results/`. Incluye una lista de URLs de ejemplo para hacer scraping. Puedes agregar más URLs según sea necesario.
 
-Tenga en cuenta que este código se proporciona de forma gratuita tal cual, y Scrapfly __no__ proporciona soporte gratuito para raspado web o consulta. Para cualquier error, consulte el rastreador de problemas.
+### `addons/main.py`
+Este script procesa archivos JSON, realiza extracción de datos, transformación, análisis de sentimientos y almacena los datos finales en formato Excel.
 
-## Configuración y uso
+### `data_extraction.py`
+Este módulo proporciona funciones para extraer datos de archivos JSON.
 
-Este raspador de Threads.net utiliza __Python 3.10__ con el paquete [scrapfly-sdk](https://pypi.org/project/scrapfly-sdk/) que se utiliza para raspar y analizar los datos de Threads.
+### `data_transformation.py`
+Este módulo transforma datos, agregando columnas adicionales con valores predeterminados.
 
-0. Asegúrese de tener __Python 3.10__ y el [gestor de paquetes Python poetry](https://python-poetry.org/docs/#installation) en su sistema.
-1. Recupere su clave API Scrapfly desde <https://scrapfly.io/dashboard> y configure la variable de entorno `SCRAPFLY_KEY`:
-    ```shell
-    $ export SCRAPFLY_KEY="SU CLAVE SCRAPFLY"
-    ```
-    o en el PowerShell en el caso de Windows:
-   ```shell
-    $ export SCRAPFLY_KEY="SU CLAVE SCRAPFLY"
-    ```
-2. Clone e instale el entorno Python:
-    ```shell
-    $ git clone https://github.com/scrapfly/scrapfly-scrapers.git
-    $ cd scrapfly-scrapers/threads-scraper
-    $ poetry install
-    $ pip install openpyxl sentiment-analysis-spanish scrapfly-sdk playwright nested_lookup jmespath "scrapfly-sdk[all]"
-    ```
-3. Ejecute el raspado de ejemplo:
-    ```shell
-    $ poetry run python run.py
-    ```
-4. Ejecute las pruebas:
-    ```shell
-    $ poetry install --with dev
-    $ poetry run pytest test.py
-    # o áreas específicas de raspado
-    $ poetry run pytest test.py -k test_thread_scraping
-    $ poetry run pytest test.py -k test_user_scraping
-    ```
- 5. Ejecute el raspado, agregando urls al archivo run.py:
-      ```shell
-    urls = [
-    "https://www.threads.net/@liberalesargentinaok/post/CyMS-ONuuaU",
-    "https://www.threads.net/@lanatappt/post/CyvjalRg-vx",
-    "https://www.threads.net/@lanatappt/post/CyuKPeasna5"  # Ejemplos
-    # Agrega más URLs aquí...
-    ]
-    ```
-    Para posteriormente, ejecutar el script:
-    ```shell
-    $ poetry run python run.py
-    ```
+### `sentiment_analysis.py`
+Este módulo analiza el sentimiento del texto utilizando la biblioteca PySentimiento.
 
-Además, este proyecto incluye tres scripts adicionales que procesan los datos extraídos por el raspador:
+### `data_storage.py`
+Este módulo maneja el almacenamiento de los datos finales en formato Excel.
 
-- `run.py`: Este script ejecuta el raspador en una lista predefinida de URLs y guarda los resultados en archivos JSON individuales en el directorio ./results. También ejecuta dos scripts adicionales, 'json_csv.py' y 'emo_excel.py', que están ubicados en el directorio /addons.
-Claro, aquí tienes un breve resumen de cada archivo `.py` que se creó:
-
-1. **data_extraction.py**: Este archivo contiene funciones para extraer datos de archivos JSON. Las funciones incluyen `obtener_datos_json` para leer un archivo JSON, `extraer_datos` para extraer datos específicos de los datos JSON, `extraer_respuestas` para extraer respuestas de los datos JSON y `guardar_datos_csv` para guardar los datos extraídos en un archivo CSV. La función `procesar_archivos_json` procesa todos los archivos JSON en el directorio 'results'.
-
-2. **data_transformation.py**: Este archivo contiene funciones para transformar los datos extraídos. La función `transformar_datos` renombra las columnas del DataFrame y añade nuevas columnas. La función `procesar_archivos_csv` procesa todos los archivos CSV en el directorio 'csv' y guarda los datos transformados en 'csv/Formatiado.csv'.
-
-3. **sentiment_analysis.py**: Este archivo contiene funciones para realizar un análisis de sentimientos en los datos transformados. La función `analisis_sentimientos` aplica un análisis de sentimientos a la columna 'Texto' del DataFrame y guarda los resultados en la columna 'Concepto_asociado'. La función `procesar_archivos_formatiado` lee el archivo 'csv/Formatiado.csv', aplica el análisis de sentimientos y guarda los resultados.
-
-4. **data_storage.py**: Este archivo contiene la función `guardar_datos_excel` para guardar el DataFrame final en un archivo Excel.
-
-5. **main.py**: Este es el archivo principal que importa y utiliza las funciones de los otros archivos para realizar todo el proceso desde la extracción de datos hasta el almacenamiento de los resultados.
-
-Espero que esto te ayude a entender mejor la estructura del código. ¡Buena suerte con tu proyecto! 😊
+## Instrucciones
+1. Ejecuta `scraper.py` para recopilar datos de Threads.net.
+2. Ejecuta `addons/main.py` para procesar y analizar los datos recopilados.
+3. Encuentra los resultados finales en el archivo `xlsx/Final.xlsx`.
