@@ -1,34 +1,34 @@
-# Scraper de Threads.net
+# Threads.net Scraper
 
-## Descripción
-Este repositorio contiene un script en Python que muestra cómo utilizar el scraper de Threads.net para recopilar datos de productos e información de búsqueda de productos. El script utiliza la API de Threads.net a través del servicio Scrapfly. Los resultados se guardan en el directorio `./results/`.
+## Description
+This repository contains a Python script that demonstrates how to use the Threads.net scraper to collect product data and product search information. The script utilizes the Threads.net API through the Scrapfly service. The results are saved in the `./results/` directory.
 
-## Prerrequisitos
-Antes de ejecutar el script, asegúrate de tener la clave de API de Scrapfly. Configura la variable de entorno `$SCRAPFLY_KEY` con tu clave de API de Scrapfly:
+## Prerequisites
+Before running the script, make sure you have the Scrapfly API key. Set the environment variable `$SCRAPFLY_KEY` with your Scrapfly API key:
 
 ### Linux/Mac
 ```bash
-export SCRAPFLY_KEY="tu clave desde https://scrapfly.io/dashboard"
+export SCRAPFLY_KEY="your key from https://scrapfly.io/dashboard"
 ```
 
 ### Windows
 ```powershell
-$env:SCRAPFLY_KEY="tu clave desde https://scrapfly.io/dashboard"
+$env:SCRAPFLY_KEY="your key from https://scrapfly.io/dashboard"
 ```
 
-A continuación, se detallan las dependencias que debes instalar utilizando Poetry:
+Next, here are the dependencies you need to install using Poetry:
 
-1. **Poetry (Gestor de Dependencias)**
+1. **Poetry (Dependency Manager)**
    ```bash
    pip install poetry
    ```
 
-2. **Dependencias del Proyecto (Ejecutar en el directorio del proyecto)**
+2. **Project Dependencies (Run in the project directory)**
    ```bash
    poetry install
    ```
 
-3. **Dependencias del Proyecto (Ejecutar en el directorio del proyecto con un entorno virtual creado por Poetry)**
+3. **Project Dependencies (Run in the project directory with a virtual environment created by Poetry)**
    ```bash
    poetry add aiohttp
    poetry add bs4
@@ -36,37 +36,37 @@ A continuación, se detallan las dependencias que debes instalar utilizando Poet
    poetry add pysentimiento
    ```
 
-Asegúrate de ejecutar estos comandos en el entorno virtual de Poetry creado para tu proyecto. Si el código utiliza alguna biblioteca personalizada, debes asegurarte de agregarla también utilizando `poetry add`.
+Make sure to run these commands in the Poetry-created virtual environment for your project. If the code uses any custom library, make sure to add it using `poetry add`.
 
-Recuerda que también necesitarás tener Python instalado en tu entorno, en mi caso estoy usando python-3.11.6.
+Also, ensure that you have Python installed in your environment; in my case, I am using python-3.11.6.
 
-## Uso
-1. Clona el repositorio en tu máquina local.
-2. Configura la clave de API de Scrapfly según se describe en los prerrequisitos.
-3. Ejecuta el script:
+## Usage
+1. Clone the repository to your local machine.
+2. Set the Scrapfly API key as described in the prerequisites.
+3. Run the script:
    ```bash
    poetry run python run.py
    ```
 
-## Detalles del Script
+## Script Details
 ### `run.py`
-Este script inicia el scraper de Threads.net y guarda los resultados en el directorio `./results/`. Incluye una lista de URLs de ejemplo para hacer scraping. Puedes agregar más URLs según sea necesario.
+This script initiates the Threads.net scraper and saves the results in the `./results/` directory. It includes a list of example URLs for scraping. You can add more URLs as needed.
 
 ### `addons/main.py`
-Este script procesa archivos JSON, realiza extracción de datos, transformación, análisis de sentimientos y almacena los datos finales en formato Excel.
+This script processes JSON files, performs data extraction, transformation, sentiment analysis, and stores the final data in Excel format.
 
 ### `addons/data_extraction.py`
-Este módulo proporciona funciones para extraer datos de archivos JSON.
+This module provides functions to extract data from JSON files.
 
 ### `addons/data_transformation.py`
-Este módulo transforma datos, agregando columnas adicionales con valores predeterminados.
+This module transforms data, adding additional columns with default values.
 
 ### `addons/sentiment_analysis.py`
-Este módulo analiza el sentimiento del texto utilizando la biblioteca PySentimiento.
+This module analyzes the sentiment of the text using the PySentimiento library.
 
 ### `addons/data_storage.py`
-Este módulo maneja el almacenamiento de los datos finales en formato Excel.
+This module handles the storage of the final data in Excel format in the `./xlsx/` directory.
 
-## Instrucciones
-1. Ejecuta `poetry run python run.py` para recopilar datos de Threads.net. Asegúrate de haber agregado las URLs previamente en la variable `urls` dentro del archivo `run.py`.
-2. Encuentra los resultados finales en el archivo `xlsx/Final.xlsx`.
+## Instructions
+1. Run `poetry run python run.py` to collect data from Threads.net. Make sure you have added the URLs previously in the `urls` variable within the `run.py` file.
+2. Find the final results in the `xlsx/Final.xlsx` file.
