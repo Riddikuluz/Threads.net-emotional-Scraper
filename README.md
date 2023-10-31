@@ -71,7 +71,7 @@ This module handles the storage of the final data in Excel format in the `./xlsx
 1. Run `poetry run python run.py` to collect data from Threads.net. Make sure you have added the URLs previously in the `urls` variable within the `run.py` file.
 2. Find the final results in the `xlsx/Final.xlsx` file.
    
-### `GPT/gpy.py`
+## GPT/gpy.py
 This Python script leverages the OpenAI GPT-3.5 Turbo model for sentiment analysis. It takes a CSV file containing text data, processes each entry through the OpenAI API, and appends the predicted sentiment to the dataset. This step is optional since the emotion analysis is already done by the PySentimiento library.
 
 #### Prerequisites
