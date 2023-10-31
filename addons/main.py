@@ -15,4 +15,4 @@ df_formatiado = pd.read_csv('csv/Formatiado.csv')
 sentiment_analysis.analisis_sentimientos(df_formatiado)
 
 # Guardar datos en Excel
-data_storage.guardar_datos_excel(df_formatiado)
+data_storage.guardar_datos(df_formatiado)

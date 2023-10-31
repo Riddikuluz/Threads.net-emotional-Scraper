@@ -14,7 +14,7 @@ def extraer_datos(data):
     published_on_timestamp = thread_data['published_on']
     nombre_usuario = thread_data['username']
     fuente = thread_data['url']
-    published_on = datetime.datetime.fromtimestamp(published_on_timestamp).strftime('%Y-%m-%d %H:%M:%S')
+    published_on = datetime.datetime.fromtimestamp(published_on_timestamp).strftime('%d-%m-%Y')
     return text, published_on, nombre_usuario, fuente
 
 def extraer_respuestas(data, fuente):
@@ -24,7 +24,7 @@ def extraer_respuestas(data, fuente):
         for reply in replies:
             reply_text = reply['text']
             reply_published_on_timestamp = reply['published_on']
-            reply_published_on = datetime.datetime.fromtimestamp(reply_published_on_timestamp).strftime('%Y-%m-%d %H:%M:%S')
+            reply_published_on = datetime.datetime.fromtimestamp(reply_published_on_timestamp).strftime('%d-%m-%Y')
             reply_username = reply['username']
             replies_data.append({
                 'Texto': reply_text,

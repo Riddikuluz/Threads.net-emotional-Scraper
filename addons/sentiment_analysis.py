@@ -8,7 +8,8 @@ def translate_emotion_to_spanish(emotion):
         'sadness': 'tristeza',
         'fear': 'miedo',
         'anger': 'enojo',
-        'disgust': 'asco'
+        'disgust': 'asco',
+        'others': 'neutral'
     }
     return translations.get(emotion, emotion)
 
