@@ -67,6 +67,56 @@ This module analyzes the sentiment of the text using the PySentimiento library.
 ### `addons/data_storage.py`
 This module handles the storage of the final data in Excel format in the `./xlsx/` directory.
 
+
+## Script Details
+### `run.py`
+This script initiates the Threads.net scraper and saves the results in the `./results/` directory. It includes a list of example URLs for scraping. You can add more URLs as needed.
+
+### `addons/main.py`
+This script processes JSON files, performs data extraction, transformation, sentiment analysis, and stores the final data in Excel format.
+
+### `addons/data_extraction.py`
+This module provides functions to extract data from JSON files.
+
+### `addons/data_transformation.py`
+This module transforms data, adding additional columns with default values.
+
+### `addons/sentiment_analysis.py`
+This module analyzes the sentiment of the text using the PySentimiento library.
+
+### `addons/data_storage.py`
+This module handles the storage of the final data in Excel format in the `./xlsx/` directory.
+
 ## Instructions
 1. Run `poetry run python run.py` to collect data from Threads.net. Make sure you have added the URLs previously in the `urls` variable within the `run.py` file.
 2. Find the final results in the `xlsx/Final.xlsx` file.
+   
+### `GPT/gpy.py`
+This Python script leverages the OpenAI GPT-3.5 Turbo model for sentiment analysis. It takes a CSV file containing text data, processes each entry through the OpenAI API, and appends the predicted sentiment to the dataset. This step is optional since the emotion analysis is already done by the PySentimiento library.
+
+#### Prerequisites
+Before running the script, ensure you have the necessary environment variables set in a `.env` file:
+
+```plaintext
+OPENAI_API_KEY=your_openai_api_key
+```
+
+Also, make sure you have the required Python packages installed:
+
+```bash
+pip install pandas requests python-dotenv openai
+```
+
+#### Usage
+1. Add your OpenAI API key to the `.env` file.
+2. Prepare a CSV file (`Final.csv`) with a column named 'Texto' containing the text data.
+3. Run the script:
+
+```bash
+python gpy.py
+```
+
+#### Notes
+- The script assumes the input CSV file has a 'Texto' column for sentiment analysis.
+- Predicted sentiments are appended to the 'Concepto asociado' column.
+
