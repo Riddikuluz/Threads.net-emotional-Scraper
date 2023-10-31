@@ -1,4 +1,4 @@
-# Threads.net Scraper
+# Threads.net emotional Scraper
 
 ## Description
 This repository contains a Python script that demonstrates how to use the Threads.net scraper to collect product data and product search information. The script utilizes the Threads.net API through the Scrapfly service. The results are saved in the `./results/` directory.
@@ -47,26 +47,6 @@ Also, ensure that you have Python installed in your environment; in my case, I a
    ```bash
    poetry run python run.py
    ```
-
-## Script Details
-### `run.py`
-This script initiates the Threads.net scraper and saves the results in the `./results/` directory. It includes a list of example URLs for scraping. You can add more URLs as needed.
-
-### `addons/main.py`
-This script processes JSON files, performs data extraction, transformation, sentiment analysis, and stores the final data in Excel format.
-
-### `addons/data_extraction.py`
-This module provides functions to extract data from JSON files.
-
-### `addons/data_transformation.py`
-This module transforms data, adding additional columns with default values.
-
-### `addons/sentiment_analysis.py`
-This module analyzes the sentiment of the text using the PySentimiento library.
-
-### `addons/data_storage.py`
-This module handles the storage of the final data in Excel format in the `./xlsx/` directory.
-
 
 ## Script Details
 ### `run.py`
