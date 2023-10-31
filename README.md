@@ -62,7 +62,7 @@ This module provides functions to extract data from JSON files.
 This module transforms data, adding additional columns with default values.
 
 ### `addons/sentiment_analysis.py`
-This module analyzes the sentiment of the text using the PySentimiento library.
+This module analyzes the sentiment of the text using the [PySentimiento](https://github.com/pysentimiento/pysentimiento#pysentimiento-a-python-toolkit-for-sentiment-analysis-and-social-nlp-tasks) library.
 
 ### `addons/data_storage.py`
 This module handles the storage of the final data in Excel format in the `./xlsx/` directory.
