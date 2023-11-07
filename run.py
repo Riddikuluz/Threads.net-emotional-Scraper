@@ -19,24 +19,24 @@ output.mkdir(exist_ok=True)
 
 # Lista de URLs a leer
 urls = [
-    "https://www.threads.net/@liberalesargentinaok/post/CyMS-ONuuaU",
-    "https://www.threads.net/@lanatappt/post/CyvjalRg-vx",# Ejemplos
-    # Agrega más URLs aquí...
+    "https://www.threads.net/@cnnchile/post/CuZeietOZNw"
 ]
+
 
 async def run():
     threads.BASE_CONFIG["debug"] = True
 
     print("running Threads scrape and saving results to ./results directory")
-    
+
     for i, url in enumerate(urls):
         thread = await threads.scrape_thread(url)
         # Guarda cada hilo en un archivo distinto
-        output.joinpath(f"thread_{i}.json").write_text(json.dumps(thread, indent=2, ensure_ascii=False), encoding='utf-8')
-        
+        output.joinpath(f"thread_{i}.json").write_text(json.dumps(
+            thread, indent=2, ensure_ascii=False), encoding='utf-8')
+
         # Si también quieres guardar los perfiles:
-        #profile = await threads.scrape_profile(url)
-        #output.joinpath(f"profile_{i}.json").write_text(json.dumps(profile, indent=2, ensure_ascii=False), encoding='utf-8')
+        # profile = await threads.scrape_profile(url)
+        # output.joinpath(f"profile_{i}.json").write_text(json.dumps(profile, indent=2, ensure_ascii=False), encoding='utf-8')
 
 if __name__ == "__main__":
     asyncio.run(run())

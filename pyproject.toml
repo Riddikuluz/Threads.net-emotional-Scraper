@@ -12,6 +12,9 @@ scrapfly-sdk = {extras = ["all"], version = "^0.8.5"}
 loguru = "^0.7.0"
 nested-lookup = "^0.2.25"
 jmespath = "^1.0.1"
+aiohttp = "^3.8.6"
+bs4 = "^0.0.1"
+pysentimiento = "^0.7.2"
 
 [tool.poetry.group.dev.dependencies]
 black = "^23.3.0"
