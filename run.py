@@ -19,7 +19,7 @@ output.mkdir(exist_ok=True)
 
 # Lista de URLs a leer
 urls = [
-    "https://www.threads.net/@cnnchile/post/CuZeietOZNw"
+    "https://www.threads.net/@yurienpeme/post/CzSmsFptAbB"
 ]
 
 
