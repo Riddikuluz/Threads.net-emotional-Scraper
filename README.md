@@ -22,27 +22,16 @@ $env:SCRAPFLY_KEY="your key from https://scrapfly.io/dashboard"
 
 Next, here are the dependencies you need to install using Poetry:
 
-1. **Poetry (Dependency Manager)**
+1. **Project Dependencies**
 
    ```bash
-   pip install poetry
+   pip install poetry scrapfly-sdk pysentimiento openpyxl pandas pysentimiento
    ```
 
 2. **Project Dependencies (Run in the project directory)**
 
    ```bash
    poetry install
-   ```
-
-3. **Project Dependencies (Run in the project directory with a virtual environment created by Poetry)**
-
-   ```bash
-   poetry add aiohttp
-   poetry add bs4
-   ```
-
-   ```bash
-   pip install pysentimiento openpyxl pandas pysentimiento
    ```
 
 Make sure to run these commands in the Poetry-created virtual environment for your project. If the code uses any custom library, make sure to add it using `poetry add`.
@@ -104,7 +93,7 @@ OPENAI_API_KEY=your_openai_api_key
 Also, make sure you have the required Python packages installed:
 
 ```bash
-pip install pandas requests python-dotenv openai
+pip install requests python-dotenv openai
 ```
 
 #### Usage
