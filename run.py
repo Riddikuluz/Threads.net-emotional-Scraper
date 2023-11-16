@@ -19,9 +19,9 @@ output.mkdir(exist_ok=True)
 
 # Lista de URLs a leer
 urls = [
-    "https://www.threads.net/@yurienpeme/post/CzSmsFptAbB"
+    "https://www.threads.net/@periodistadeperon/post/CzpHmeEPqfx",
+    "https://www.threads.net/@periodistadeperon/post/Czo2E8UvP5o"
 ]
-
 
 async def run():
     threads.BASE_CONFIG["debug"] = True
